@@ -41,5 +41,5 @@ This gem provides a collection of operations for use within the Quickmail API.
 * Send a pull request against the *development* branch
 
 ## Copyright
-Copyright (c) 2018 [Tom Dallimore](http://www.tomdallimore.com/?utm_source=Quickmail&utm_medium=website&utm_campaign=tomdallimore) ([@tom_dallimore](http://twitter.com/tom_dallimore))  
+Copyright (c) 2020 [Tom Dallimore](http://www.tomdallimore.com/?utm_source=quickmail&utm_medium=website&utm_campaign=tomdallimore) ([@tom_dallimore](http://twitter.com/tom_dallimore))  
 Licenced under the MIT licence.
