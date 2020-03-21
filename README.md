@@ -1,6 +1,6 @@
 ## Quickmail
 
-[![Gem Version](https://badge.fury.io/rb/Quickmail.svg)](https://badge.fury.io/rb/quickmail)
+[![Gem Version](https://badge.fury.io/rb/quickmail.svg)](https://badge.fury.io/rb/quickmail)
 
 A Ruby wrapper for the Quickmail API.
 
