@@ -27,7 +27,7 @@ module Quickmail
 
   class << self
 
-    attr_writer :access_token, :api_version, :test_mode
+    attr_writer :access_token, :api_version, :test_mode, :api_base
 
     def access_token
       defined? @access_token and @access_token or raise(
@@ -45,10 +45,13 @@ module Quickmail
       @test_mode.nil? ? false : @test_mode
     end
 
+    def api_base
+      Quickmail.test_mode ? "https://quickmailonline.com.au/api/test"  : "https://quickmailonline.com.au/api/"
+    end
+
     def request(method, resource, params = {})
       ss_access_token = params[:access_token] || Quickmail.access_token
       ss_api_version = Quickmail.api_version
-      api_base = Quickmail.test_mode ? "https://quickmailonline.com.au/api/test"  : "https://quickmailonline.com.au/api/"
 
       params.except!(:access_token)
 
@@ -67,7 +70,7 @@ module Quickmail
       end
       RestClient::Request.new({
                                 method: method,
-                                url: api_base + ss_api_version + '/' + resource,
+                                url: Quickmail.api_base + ss_api_version + '/' + resource,
                                 payload: payload ? payload.to_json : nil,
                                 headers: headers
                               }).execute do |response, request, result|

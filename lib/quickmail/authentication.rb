@@ -7,7 +7,7 @@ module Quickmail
       def oauth(payload = {})
         RestClient::Request.new({
             method: :post,
-            url: API_BASE + '/token',
+            url: Quickmail.api_base + '/token',
             payload: payload ? payload.to_json : nil,
             headers: {content_type: "application/x-www-form-urlencoded"}
           }).execute do |response, request, result|
