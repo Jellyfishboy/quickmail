@@ -8,7 +8,7 @@ module Quickmail
         RestClient::Request.new({
             method: :post,
             url: Quickmail.api_base + '/token',
-            payload: payload ? payload.to_json : nil,
+            payload: payload,
             headers: {content_type: "application/x-www-form-urlencoded"}
           }).execute do |response, request, result|
           if response.code != 201

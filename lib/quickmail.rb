@@ -11,10 +11,10 @@ module Quickmail
   class QuickmailError < StandardError
   end
 
-  class AuthenticationError < QuickmailError;
-  end
-  class ConfigurationError < QuickmailError;
-  end
+  class AuthenticationError < QuickmailError; end
+
+  class ConfigurationError < QuickmailError; end
+
   class ApiRequestError < QuickmailError
     attr_reader :response_code, :response_headers, :response_body
 
@@ -46,7 +46,7 @@ module Quickmail
     end
 
     def api_base
-      Quickmail.test_mode ? "https://quickmailonline.com.au/api/test"  : "https://quickmailonline.com.au/api/"
+      Quickmail.test_mode ? "https://quickmailonline.com.au/api/test" : "https://quickmailonline.com.au/api/"
     end
 
     def request(method, resource, params = {})
@@ -71,7 +71,7 @@ module Quickmail
       RestClient::Request.new({
                                 method: method,
                                 url: Quickmail.api_base + ss_api_version + '/' + resource,
-                                payload: payload ? payload.to_json : nil,
+                                payload: payload,
                                 headers: headers
                               }).execute do |response, request, result|
         if response.code != 200
