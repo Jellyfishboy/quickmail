@@ -4,7 +4,7 @@ module Quickmail
   class Authentication
 
     class << self
-      def create(payload = {})
+      def oauth(payload = {})
         RestClient::Request.new({
             method: :post,
             url: API_BASE + '/token',
