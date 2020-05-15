@@ -28,6 +28,9 @@ module Quickmail
   end
 
   class << self
+
+    attr_writer :access_token, :api_version, :test_mode
+
     def access_token
       defined? @access_token and @access_token or raise(
         ConfigurationError, "Quickmail access token not configured"
@@ -44,11 +47,11 @@ module Quickmail
       @test_mode
     end
 
-    attr_writer :access_token, :api_version, :test_mode
-
     def request(method, resource, params = {})
-      ss_access_token = Quickmail.access_token
+      ss_access_token = params[:access_token] || Quickmail.access_token
       ss_api_version = Quickmail.api_version
+
+      params.except!(:access_token)
 
       defined? method or raise(
         ArgumentError, "Request method has not been specified"
@@ -57,10 +60,10 @@ module Quickmail
         ArgumentError, "Request resource has not been specified"
       )
       if method == :get
-        headers = {accept: :json, content_type: :json, access_token: ss_access_token}.merge({params: params})
+        headers = {accept: :json, content_type: :json, Authorization: "Bearer #{ss_access_token}"}.merge({params: params})
         payload = nil
       else
-        headers = {accept: :json, content_type: :json, access_token: ss_access_token}
+        headers = {accept: :json, content_type: :json, Authorization: "Bearer #{ss_access_token}"}
         payload = params
       end
       RestClient::Request.new({
