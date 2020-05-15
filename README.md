@@ -18,12 +18,12 @@ Then run bundle to install the Gem:
 bundle install
 ```
 
-Set up an initializer file with your Quickmail API keys:
+Set up an initializer file with your Quickmail access token and settings:
 
 ```ruby
-Quickmail.username  = 'quickmail_api_key'
-Quickmail.password  = 'quickmail_api_secret'
+Quickmail.access_token  = 'quickmail_access_token'
 Quickmail.api_version = 'v1'
+Quickmail.test_mode  = "true or false"
 ```
 e.g. *config/initializers/quickmail.rb*
 
