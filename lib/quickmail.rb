@@ -74,7 +74,7 @@ module Quickmail
                                 payload: payload,
                                 headers: headers
                               }).execute do |response, request, result|
-        if response.code != 200
+        if response.code != 201 || response.code != 200
           raise ApiRequestError.new(
             response_code: response.code,
             response_headers: response.headers,
