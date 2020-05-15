@@ -5,7 +5,7 @@ require "quickmail/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "Quickmail"
+  s.name        = "quickmail"
   s.version     = Quickmail::VERSION
   s.authors     = ["Tom Dallimore"]
   s.email       = ["me@tomdallimore.com"]
