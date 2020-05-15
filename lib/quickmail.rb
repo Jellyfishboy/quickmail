@@ -42,7 +42,7 @@ module Quickmail
     end
 
     def test_mode
-      @test_mode
+      @test_mode.nil? ? false : @test_mode
     end
 
     def request(method, resource, params = {})
