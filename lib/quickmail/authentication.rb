@@ -11,7 +11,7 @@ module Quickmail
             payload: payload,
             headers: {content_type: "application/x-www-form-urlencoded"}
           }).execute do |response, request, result|
-          if response.code != 201
+          if response.code != 200
             raise ApiRequestError.new(
               response_code: response.code,
               response_headers: response.headers,
