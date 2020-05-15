@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Quickmail::VERSION
   s.authors     = ["Tom Dallimore"]
   s.email       = ["me@tomdallimore.com"]
-  s.homepage    = "https://github.com/Jellyfishboy/quickmail"
+  s.homepage    = "https://github.com/Subamplify/quickmail"
   s.summary     = "A Ruby wrapper for the Quickmail 3PL fulfillment company API"
   s.description = "A Ruby wrapper for the Quickmail 3PL fulfillment company API"
   s.license     = "MIT"
