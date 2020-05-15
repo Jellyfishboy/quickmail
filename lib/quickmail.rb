@@ -8,8 +8,6 @@ require 'quickmail/tracking'
 
 module Quickmail
 
-  API_BASE = Quickmail.test_mode ? "https://quickmailonline.com.au/api/test"  : "https://quickmailonline.com.au/api/"
-
   class QuickmailError < StandardError
   end
 
@@ -50,6 +48,7 @@ module Quickmail
     def request(method, resource, params = {})
       ss_access_token = params[:access_token] || Quickmail.access_token
       ss_api_version = Quickmail.api_version
+      api_base = Quickmail.test_mode ? "https://quickmailonline.com.au/api/test"  : "https://quickmailonline.com.au/api/"
 
       params.except!(:access_token)
 
@@ -68,7 +67,7 @@ module Quickmail
       end
       RestClient::Request.new({
                                 method: method,
-                                url: API_BASE + ss_api_version + '/' + resource,
+                                url: api_base + ss_api_version + '/' + resource,
                                 payload: payload ? payload.to_json : nil,
                                 headers: headers
                               }).execute do |response, request, result|
