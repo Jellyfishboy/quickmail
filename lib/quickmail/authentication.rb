@@ -5,7 +5,7 @@ module Quickmail
 
     class << self
       def oauth(payload = {})
-        RestClient::Request.new({
+        response = RestClient::Request.new({
             method: :post,
             url: Quickmail.api_base + '/token',
             payload: payload,
@@ -18,7 +18,7 @@ module Quickmail
               response_body: response.to_str
             )
           end
-          response
+          JSON.parse(response.body)
         end
       end
     end
