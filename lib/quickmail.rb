@@ -2,11 +2,13 @@
 
 require 'rest-client'
 
+require 'quickmail/authentication'
 require 'quickmail/order'
+require 'quickmail/tracking'
 
 module Quickmail
 
-  API_BASE = "https://quickmailonline.com.au/api/"
+  API_BASE = Quickmail.test_mode ? "https://quickmailonline.com.au/api/test"  : "https://quickmailonline.com.au/api/"
 
   class QuickmailError < StandardError
   end
@@ -26,28 +28,27 @@ module Quickmail
   end
 
   class << self
-    def username
-      defined? @username and @username or raise(
-        ConfigurationError, "Quickmail username not configured"
+    def access_token
+      defined? @access_token and @access_token or raise(
+        ConfigurationError, "Quickmail access token not configured"
       )
     end
 
-    attr_writer :username
-
-    def password
-      defined? @password and @password or raise(
-        ConfigurationError, "Quickmail password not configured"
+    def api_version
+      defined? @api_version and @api_version or raise(
+        ConfigurationError, "Quickmail api version not configured"
       )
     end
 
-    attr_writer :password
+    def test_mode
+      @test_mode
+    end
+
+    attr_writer :access_token, :api_version, :test_mode
 
     def request(method, resource, params = {})
-      ss_username = params[:username] || Quickmail.username
-      ss_password = params[:password] || Quickmail.password
-      ss_api_version = Quickmail.api_version || "v1"
-
-      params.except!(:username, :password)
+      ss_access_token = Quickmail.access_token
+      ss_api_version = Quickmail.api_version
 
       defined? method or raise(
         ArgumentError, "Request method has not been specified"
@@ -56,17 +57,15 @@ module Quickmail
         ArgumentError, "Request resource has not been specified"
       )
       if method == :get
-        headers = {accept: :json, content_type: :json}.merge({params: params})
+        headers = {accept: :json, content_type: :json, access_token: ss_access_token}.merge({params: params})
         payload = nil
       else
-        headers = {accept: :json, content_type: :json}
+        headers = {accept: :json, content_type: :json, access_token: ss_access_token}
         payload = params
       end
       RestClient::Request.new({
                                 method: method,
                                 url: API_BASE + ss_api_version + '/' + resource,
-                                user: ss_username,
-                                password: ss_password,
                                 payload: payload ? payload.to_json : nil,
                                 headers: headers
                               }).execute do |response, request, result|
