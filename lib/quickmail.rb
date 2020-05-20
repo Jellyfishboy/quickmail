@@ -3,6 +3,7 @@
 require 'rest-client'
 
 require 'quickmail/authentication'
+require 'quickmail/inventory'
 require 'quickmail/order'
 require 'quickmail/tracking'
 

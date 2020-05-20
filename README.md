@@ -31,6 +31,38 @@ e.g. *config/initializers/quickmail.rb*
 
 This gem provides a collection of operations for use within the Quickmail API.
 
+### Generate API access token
+
+Use OAuth to generate new API access for an account
+
+```ruby
+Quickmail::Authentication.oauth(auth_params)
+````
+
+
+### List Inventory
+
+Create all available SKUs in Inventory
+
+```ruby
+Quickmail::Inventory.list
+````
+
+### Create Order
+
+Create a single order
+
+```ruby
+Quickmail::Order.create(order_params)
+````
+
+### Tracking
+
+Poll the tracking endpoint to get the latest order delivery updates
+
+```ruby
+Quickmail::Tracking.poll
+````
 
 ## How to contribute
 
