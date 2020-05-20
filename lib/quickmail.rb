@@ -71,7 +71,7 @@ module Quickmail
       RestClient::Request.new({
                                 method: method,
                                 url: Quickmail.api_base + ss_api_version + '/' + resource,
-                                payload: payload,
+                                payload: payload.to_json,
                                 headers: headers
                               }).execute do |response, request, result|
         if response.code != 201 || response.code != 200
