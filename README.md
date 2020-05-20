@@ -27,16 +27,19 @@ Quickmail.test_mode  = "true or false"
 ```
 e.g. *config/initializers/quickmail.rb*
 
+**You can either set the access token at the project level via an initializer file or at the request level 
+as a parameter.**
+
 ## Usage
 
-This gem provides a collection of operations for use within the Quickmail API.
+This gem provides a collection of operations for use within the Quickmail API. 
 
 ### Generate API access token
 
 Use OAuth to generate new API access for an account
 
 ```ruby
-Quickmail::Authentication.oauth(auth_params)
+Quickmail::Authentication.oauth(auth_params, access_token)
 ````
 
 
@@ -45,7 +48,7 @@ Quickmail::Authentication.oauth(auth_params)
 Create all available SKUs in Inventory
 
 ```ruby
-Quickmail::Inventory.list
+Quickmail::Inventory.list(access_token)
 ````
 
 ### Create Order
@@ -53,7 +56,7 @@ Quickmail::Inventory.list
 Create a single order
 
 ```ruby
-Quickmail::Order.create(order_params)
+Quickmail::Order.create(order_params, access_token)
 ````
 
 ### Tracking
@@ -61,7 +64,7 @@ Quickmail::Order.create(order_params)
 Poll the tracking endpoint to get the latest order delivery updates
 
 ```ruby
-Quickmail::Tracking.poll
+Quickmail::Tracking.poll(tracking_params, access_token)
 ````
 
 ## How to contribute

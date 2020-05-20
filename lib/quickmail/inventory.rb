@@ -5,8 +5,8 @@ module Quickmail
 
     class << self
 
-      def list
-        response = Quickmail.request(:get, 'inventory')
+      def list(access_token=nil)
+        response = Quickmail.request(:get, 'inventory', access_token)
 
         response
       end

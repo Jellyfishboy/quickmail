@@ -50,11 +50,9 @@ module Quickmail
       Quickmail.test_mode ? "https://quickmailonline.com.au/api/test/" : "https://quickmailonline.com.au/api/"
     end
 
-    def request(method, resource, params = {})
-      ss_access_token = params[:access_token] || Quickmail.access_token
+    def request(method, resource, params = {}, access_token=nil)
+      ss_access_token = access_token || Quickmail.access_token
       ss_api_version = Quickmail.api_version
-
-      params.except!(:access_token)
 
       defined? method or raise(
         ArgumentError, "Request method has not been specified"
