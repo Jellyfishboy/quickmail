@@ -50,7 +50,7 @@ module Quickmail
       Quickmail.test_mode ? "https://quickmailonline.com.au/api/test/" : "https://quickmailonline.com.au/api/"
     end
 
-    def request(method, resource, params = {}, access_token=nil)
+    def request(method, resource, params = {}, access_token = nil)
       ss_access_token = access_token || Quickmail.access_token
       ss_api_version = Quickmail.api_version
 

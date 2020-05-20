@@ -4,7 +4,7 @@ module Quickmail
   class Order
 
     class << self
-      def create(params = {}, access_token=nil)
+      def create(params = {}, access_token = nil)
         response = Quickmail.request(:post, 'orders', params, access_token)
 
         response
