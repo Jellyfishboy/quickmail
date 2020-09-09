@@ -61,15 +61,17 @@ module Quickmail
         ArgumentError, "Request resource has not been specified"
       )
       if method == :get
-        headers = {accept: :json, content_type: :json, Authorization: "Bearer #{ss_access_token}"}.merge({params: params})
+        url = Quickmail.api_base + ss_api_version + '/' + resource + '?' + params
         payload = nil
-      else
         headers = {accept: :json, content_type: :json, Authorization: "Bearer #{ss_access_token}"}
+      else
+        url = Quickmail.api_base + ss_api_version + '/' + resource
         payload = params
+        headers = {accept: :json, content_type: :json, Authorization: "Bearer #{ss_access_token}"}
       end
       RestClient::Request.new({
                                 method: method,
-                                url: Quickmail.api_base + ss_api_version + '/' + resource,
+                                url: url,
                                 payload: payload.to_json,
                                 headers: headers
                               }).execute do |response, request, result|
