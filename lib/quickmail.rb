@@ -73,13 +73,6 @@ module Quickmail
                                 payload: payload.to_json,
                                 headers: headers
                               }).execute do |response, request, result|
-        if response.code != 201 || response.code != 200
-          raise ApiRequestError.new(
-            response_code: response.code,
-            response_headers: response.headers,
-            response_body: response.to_str
-          )
-        end
         str_response = response.to_str
         str_response.blank? ? '' : JSON.parse(str_response)
       end
