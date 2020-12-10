@@ -47,7 +47,7 @@ module Quickmail
     end
 
     def api_base
-      Quickmail.test_mode ? "https://quickmailonline.com.au/api/test/" : "https://quickmailonline.com.au/api/"
+      Quickmail.test_mode ? "https://getquickmail.com/api/test/" : "https://getquickmail.com/api/"
     end
 
     def request(method, resource, params = {}, access_token = nil)
