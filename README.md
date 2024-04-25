@@ -71,10 +71,10 @@ Quickmail::Tracking.poll(tracking_params, access_token)
 
 * Fork the project
 * Create your feature or bug fix
-* Add the requried tests for it.
+* Add the required tests for it.
 * Commit (do not change version or history)
 * Send a pull request against the *development* branch
 
 ## Copyright
-Copyright (c) 2020 [Tom Dallimore](http://www.tomdallimore.com/?utm_source=quickmail&utm_medium=website&utm_campaign=tomdallimore) ([@tom_dallimore](http://twitter.com/tom_dallimore))  
+Copyright (c) 2024 [Douglas Lim]([@hellodouglim](https://twitter.com/hellodouglim))  
 Licenced under the MIT licence.
