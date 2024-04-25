@@ -76,5 +76,5 @@ Quickmail::Tracking.poll(tracking_params, access_token)
 * Send a pull request against the *development* branch
 
 ## Copyright
-Copyright (c) 2024 ([Douglas Lim])([@hellodouglim](https://twitter.com/hellodouglim))  
+Copyright (c) 2024 Douglas Lim ([@hellodouglim](https://twitter.com/hellodouglim))  
 Licenced under the MIT licence.
